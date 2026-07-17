@@ -3,161 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение 💌</title>
+    <title>Премиальное Приглашение</title>
     <style>
         :root {
-            --pink: #ff4d6d;
-            --soft-pink: #ffcad4;
-            --white: #ffffff;
-            --text: #590d22;
+            --bg: #0a0a0c;
+            --card-bg: rgba(18, 18, 24, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: #ff2a5f;
+            --accent-glow: rgba(255, 42, 95, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f8edeb, #ffcad4);
-            height: 100vh;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            position: relative;
         }
 
-        /* Анимация сердечек */
-        .heart-bg {
+        /* Интерактивный живой фон (взрослый неоновый градиент) */
+        .bg-glow {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0; overflow: hidden; pointer-events: none;
-        }
-        .heart {
-            position: absolute; color: var(--pink); opacity: 0.3;
-            animation: float 6s infinite linear;
-        }
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0); }
-            100% { transform: translateY(-10vh) scale(1); }
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            animation: pulseBg 8s infinite alternate ease-in-out;
         }
 
-        /* Карточка */
+        @keyframes pulseBg {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.9; }
+        }
+
+        /* Элегантный премиум-контейнер */
         .card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 350px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px 30px;
             width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
             z-index: 1;
-            transition: 0.5s;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        h1 { color: var(--text); font-size: 24px; margin-bottom: 20px; }
-        .emoji { font-size: 60px; display: block; margin-bottom: 20px; animation: pulse 2s infinite; }
-        
-        button {
-            padding: 12px 25px; border: none; border-radius: 50px;
-            font-weight: bold; cursor: pointer; transition: 0.3s; margin: 5px;
+        .screen {
+            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
-        .btn-yes { background: var(--pink); color: white; animation: pulse-btn 1.5s infinite; }
-        .btn-no { background: white; color: var(--pink); border: 2px solid var(--pink); }
-        
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-        @keyframes pulse-btn { 0% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(255, 77, 109, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); } }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Кастомная иконка вместо картинок */
+        .icon-wrap {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 42, 95, 0.1);
+            border: 1px solid rgba(255, 42, 95, 0.3);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 25px;
+            font-size: 28px;
+            box-shadow: 0 0 20px rgba(255, 42, 95, 0.15);
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* Кнопки */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            min-height: 55px;
+            position: relative;
+        }
+
+        button {
+            padding: 14px 28px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #ff4575;
+            box-shadow: 0 6px 20px rgba(255, 42, 95, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        #no-btn.evading {
+            position: fixed;
+            z-index: 9999;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            background: #121218;
+            border-color: var(--accent);
+            color: var(--accent);
+        }
 
         .hidden { display: none !important; }
-        .input-box { margin: 15px 0; width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; }
+
+        /* Элегантные инпуты */
+        .input-field {
+            width: 100%;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 14px;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 10px rgba(255, 42, 95, 0.2);
+        }
+
+        /* Сетка выбора вариантов */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .option-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 20px 15px;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .option-card:hover {
+            background: rgba(255, 42, 95, 0.05);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .option-card .opt-icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .option-card span {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
         
-        .food-opt { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
-        .food-btn { background: #fff5f5; border: 1px solid var(--soft-pink); padding: 10px; border-radius: 15px; }
-        .food-btn:hover { background: var(--pink); color: white; }
+        .option-card:hover span {
+            color: #fff;
+        }
+
+        .success-text {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            background: rgba(255,255,255,0.02);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .success-text strong {
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
 
-    <div class="heart-bg" id="hearts"></div>
+    <div class="bg-glow"></div>
 
     <div class="card" id="card">
-        <!-- Стр 1 -->
-        <div id="p1">
-            <span class="emoji">💌</span>
-            <h1>Хочешь сходить со мной на свидание?</h1>
-            <button class="btn-yes" onclick="nextPage('p2')">Да!</button>
-            <button class="btn-no" id="no-btn">Нет</button>
-        </div>
-
-        <!-- Стр 2 -->
-        <div id="p2" class="hidden">
-            <span class="emoji">🥰</span>
-            <h1>Я так и знал! Ты самая лучшая!</h1>
-            <button class="btn-yes" onclick="nextPage('p3')">Дальше</button>
-        </div>
-
-        <!-- Стр 3 -->
-        <div id="p3" class="hidden">
-            <h1>Выбери дату</h1>
-            <input type="date" class="input-box" id="date">
-            <input type="time" class="input-box" id="time">
-            <button class="btn-yes" onclick="saveDateTime()">Продолжить</button>
-        </div>
-
-        <!-- Стр 4 -->
-        <div id="p4" class="hidden">
-            <h1>Что будем делать?</h1>
-            <div class="food-opt">
-                <button class="food-btn" onclick="finish('Бургеры 🍔')">Бургеры 🍔</button>
-                <button class="food-btn" onclick="finish('Суши 🍣')">Суши 🍣</button>
-                <button class="food-btn" onclick="finish('Пиццу 🍕')">Пиццу 🍕</button>
-                <button class="food-btn" onclick="finish('Прогулку 🌸')">Прогулку 🌸</button>
+        <!-- Экран 1: Приглашение -->
+        <div id="step1" class="screen">
+            <div class="icon-wrap">🥂</div>
+            <h1>Закрытое приглашение</h1>
+            <p>У меня есть к тебе одно эксклюзивное предложение. Проведём этот вечер вместе?</p>
+            <div class="btn-group">
+                <button class="btn-primary" style="width: auto;" onclick="nextStep('step1', 'step2')">Определённо да</button>
+                <button class="btn-secondary" id="no-btn">Нет</button>
             </div>
         </div>
 
-        <!-- Стр 5 -->
-        <div id="p5" class="hidden">
-            <span class="emoji">✨</span>
-            <h1 id="final-text">До встречи!</h1>
-            <button class="btn-no" onclick="location.reload()">Начать сначала</button>
+        <!-- Экран 2: Подтверждение -->
+        <div id="step2" class="screen hidden">
+            <div class="icon-wrap">✨</div>
+            <h1>Отличный выбор</h1>
+            <p>Я и не сомневался в твоём вкусе. Давай зафиксируем детали нашей встречи.</p>
+            <button class="btn-primary" onclick="nextStep('step2', 'step3')">Перейти к деталям</button>
+        </div>
+
+        <!-- Экран 3: Время и дата -->
+        <div id="step3" class="screen hidden">
+            <div class="icon-wrap">📅</div>
+            <h1>Когда тебе удобно?</h1>
+            <p>Укажи подходящую дату и время, чтобы я всё спланировал.</p>
+            <input type="date" class="input-field" id="date">
+            <input type="time" class="input-field" id="time">
+            <button class="btn-primary" onclick="saveDateTime()">Далее</button>
+        </div>
+
+        <!-- Экран 4: Формат встречи -->
+        <div id="step4" class="screen hidden">
+            <div class="icon-wrap">🌃</div>
+            <h1>Формат вечера</h1>
+            <p>Выбери локацию или атмосферу, которая тебе ближе всего.</p>
+            <div class="options-grid">
+                <div class="option-card" onclick="completePlan('Ужин в ресторане 🍽️')">
+                    <span class="opt-icon">🍽️</span>
+                    <span>Ресторан</span>
+                </div>
+                <div class="option-card" onclick="completePlan('Вечер дегустации суши 🍣')">
+                    <span class="opt-icon">🍣</span>
+                    <span>Суши-бар</span>
+                </div>
+                <div class="option-card" onclick="completePlan('Уютная кофейня ☕')">
+                    <span class="opt-icon">☕</span>
+                    <span>Кофейня</span>
+                </div>
+                <div class="option-card" onclick="completePlan('Вечерняя прогулка по городу 🌌')">
+                    <span class="opt-icon">🌌</span>
+                    <span>Прогулка</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран 5: Финал -->
+        <div id="step5" class="screen hidden">
+            <div class="icon-wrap">🔒</div>
+            <h1>Встреча подтверждена</h1>
+            <div class="success-text" id="summary-text"></div>
+            <p style="margin-bottom: 0;">До скорого. Я сообщу, когда всё будет готово. 😉</p>
         </div>
     </div>
 
     <script>
-        // Создаем сердечки
-        const heartsContainer = document.getElementById('hearts');
-        for(let i=0; i<15; i++) {
-            const h = document.createElement('div');
-            h.innerHTML = '❤';
-            h.className = 'heart';
-            h.style.left = Math.random() * 100 + '%';
-            h.style.animationDelay = Math.random() * 5 + 's';
-            h.style.fontSize = Math.random() * 20 + 20 + 'px';
-            heartsContainer.appendChild(h);
+        function nextStep(hideId, showId) {
+            document.getElementById(hideId).classList.add('hidden');
+            document.getElementById(showId).classList.remove('hidden');
         }
 
-        function nextPage(id) {
-            document.querySelectorAll('.card > div').forEach(d => d.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
-        }
+        let appointment = { date: "", time: "" };
 
-        let date = "", time = "";
         function saveDateTime() {
-            date = document.getElementById('date').value || "скоро";
-            time = document.getElementById('time').value || "вечером";
-            nextPage('p4');
+            const d = document.getElementById('date').value;
+            const t = document.getElementById('time').value;
+            appointment.date = d ? new Date(d).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' }) : "Ближайшие дни";
+            appointment.time = t || "Вечер";
+            nextStep('step3', 'step4');
         }
 
-        function finish(choice) {
-            document.getElementById('final-text').innerText = `Жду тебя ${date} в ${time}. Выбрано: ${choice}! ✨`;
-            nextPage('p5');
+        function completePlan(format) {
+            const summary = `План утверждён на <strong>${appointment.date}</strong> в <strong>${appointment.time}</strong>.<br>Формат встречи: <strong>${format}</strong>.`;
+            document.getElementById('summary-text').innerHTML = summary;
+            nextStep('step4', 'step5');
         }
 
-        // Кнопка "Нет" убегает
+        // Логика уклонения кнопки "Нет"
         const noBtn = document.getElementById('no-btn');
-        noBtn.onmouseover = () => {
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = Math.random() * 80 + '%';
-            noBtn.style.top = Math.random() * 80 + '%';
-        }
+        const handleNo = (e) => {
+            if (e.type === 'touchstart') e.preventDefault();
+            
+            const padding = 60;
+            const x = Math.max(padding, Math.random() * (window.innerWidth - 120));
+            const y = Math.max(padding, Math.random() * (window.innerHeight - 60));
+            
+            noBtn.classList.add('evading');
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        };
+
+        noBtn.addEventListener('mouseover', handleNo);
+        noBtn.addEventListener('touchstart', handleNo);
     </script>
 </body>
 </html>
