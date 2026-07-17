@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение - Свидание</title>
+    <style>
+        :root {
+            --bg-color: #fdf2f4;
+            --text-color: #333333;
+            --accent-color: #ff4b6e;
+            --accent-hover: #ff708a;
+            --card-bg: #ffffff;
+            --border-radius: 20px;
+            --shadow: 0 10px 35px rgba(255, 75, 110, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+
+        .card { width: 100%; max-width: 380px; background-color: var(--card-bg); border-radius: var(--border-radius); padding: 25px; text-align: center; box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.6); position: relative; z-index: 10; }
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 { font-size: 18px; font-weight: 700; margin-bottom: 15px; color: #1a1a1a; }
+        p { font-size: 14px; line-height: 1.5; margin-bottom: 25px; color: #666; }
+        .main-image { width: 100%; height: auto; max-height: 250px; object-fit: contain; margin-bottom: 20px; border-radius: 15px; }
+
+        .btn-container { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px; min-height: 60px; position: relative; }
+        button { padding: 12px 26px; font-size: 15px; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: 0.2s; }
+        .btn-yes { background-color: var(--accent-color); color: white; z-index: 11; }
+        .btn-yes:hover { background-color: var(--accent-hover); }
+        .btn-no { background-color: white; color: var(--accent-color); border: 2px solid #fce4ec; position: relative; z-index: 5; }
+        .btn-no.flying { position: fixed; z-index: 9999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .hidden { display: none !important; }
+
+        .input-group { text-align: left; margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 13px; margin-bottom: 5px; color: #777; font-weight: 600; }
+        input { width: 100%; padding: 11px 15px; font-size: 15px; border-radius: 12px; border: 1px solid #e0e0e0; background-color: #fbfbfb; }
+        
+        .food-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 15px; }
+        .food-item { background-color: #fdf9fa; border-radius: 15px; padding: 12px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; display: flex; flex-direction: column; align-items: center; }
+        .food-item:hover { border-color: #fce4ec; transform: translateY(-3px); }
+        .food-item img { width: 80px; height: 80px; object-fit: cover; border-radius: 10px; margin-bottom: 8px; }
+        .food-item span { font-size: 13px; font-weight: 600; color: #444; }
+    </style>
+</head>
+<body>
+
+    <div class="card fade-in" id="card">
+        <!-- Стр. 1: Приглашение -->
+        <div id="page1">
+            <img src="bunny1.png" class="main-image" alt="Зайчик">
+            <h1>Хочешь сходить со мной на свидание? 💌</h1>
+            <div class="btn-container">
+                <button id="yes" class="btn-yes">❤️ Да</button>
+                <button id="no" class="btn-no">Нет</button>
+            </div>
+        </div>
+
+        <!-- Стр. 2: Смущение -->
+        <div id="page2" class="hidden">
+            <img src="bunny2.jpg" class="main-image" alt="Смущение">
+            <h1>Подожди, ты действительно сказала да? 😍</h1>
+            <div class="btn-container">
+                <button id="confirm-yes" class="btn-yes">Да, да, ДА</button>
+            </div>
+        </div>
+
+        <!-- Стр. 3: Дата -->
+        <div id="page3" class="hidden">
+            <img src="bunny3.png" class="main-image" alt="Выбор даты">
+            <h1>Когда ты свободна?</h1>
+            <div class="input-group"><label>Дата</label><input type="date" id="date"></div>
+            <div class="input-group"><label>Время</label><input type="time" id="time"></div>
+            <button id="goto-food" class="btn-yes" style="width: 100%;">Выбрать еду 🩷</button>
+        </div>
+
+        <!-- Стр. 4: Выбор еды -->
+        <div id="page4" class="hidden">
+            <h1>Что хочешь выбрать?</h1>
+            <div class="food-grid">
+                <div class="food-item" id="food-burger">
+                    <img src="burger.png"><span>Бургер</span>
+                </div>
+                <div class="food-item" id="food-sushi">
+                    <img src="sushi.png"><span>Суши</span>
+                </div>
+                <div class="food-item" id="food-pizza">
+                    <img src="pizza.png"><span>Пицца</span>
+                </div>
+                <div class="food-item" id="food-kebab">
+                    <img src="kebab.png"><span>Шашлычки</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Стр. 5: Финал -->
+        <div id="page5" class="hidden">
+            <img src="final.png" id="final-image" class="main-image">
+            <h1>❤️ До встречи! ❤️</h1>
+            <p id="final-text"></p>
+            <button class="btn-no" onclick="location.reload()" style="margin-top: 15px;">Начать сначала</button>
+        </div>
+    </div>
+
+    <script>
+        const card = document.getElementById("card");
+        const page1 = document.getElementById("page1");
+        const page2 = document.getElementById("page2");
+        const page3 = document.getElementById("page3");
+        const page4 = document.getElementById("page4");
+        const page5 = document.getElementById("page5");
+
+        const yesBtn = document.getElementById("yes");
+        const noBtn = document.getElementById("no");
+        const confirmYesBtn = document.getElementById("confirm-yes");
+        const gotoFoodBtn = document.getElementById("goto-food");
+
+        const appointment = { date: "", time: "" };
+
+        function triggerFade() {
+            card.classList.remove("fade-in");
+            void card.offsetWidth; 
+            card.classList.add("fade-in");
+        }
+
+        function switchPage(hidePage, showPage) {
+            triggerFade();
+            hidePage.classList.add("hidden");
+            showPage.classList.remove("hidden");
+        }
+
+        // Логика кнопки "Нет"
+        let count = 0; let yesScale = 1; let noScale = 1;
+        const texts = ["Уверена?", "Точно?", "Подумай.", "Плиз.", "Да лучше.", "Ой всё.", "Ищу...", "Где же я?"];
+
+        function handleNo(e) {
+            if(e.type === 'touchstart') e.preventDefault();
+            count++;
+            noBtn.innerHTML = texts[Math.min(count - 1, texts.length - 1)];
+            yesScale += 0.3;
+            yesBtn.style.transform = `scale(${yesScale})`;
+            noScale = Math.max(0.3, 1 - count * 0.1);
+            
+            const p = 50;
+            const rx = Math.max(p, Math.random() * (window.innerWidth - 100));
+            const ry = Math.max(p, Math.random() * (window.innerHeight - 100));
+            
+            noBtn.classList.add('flying');
+            noBtn.style.left = rx + 'px'; noBtn.style.top = ry + 'px';
+            noBtn.style.transform = `scale(${noScale})`;
+        }
+
+        noBtn.addEventListener('mouseover', handleNo);
+        noBtn.addEventListener('click', handleNo);
+
+        // Навигация между экранами
+        yesBtn.onclick = () => {
+            if (noBtn.classList.contains('flying')) noBtn.remove();
+            switchPage(page1, page2);
+        };
+        
+        confirmYesBtn.onclick = () => switchPage(page2, page3);
+
+        gotoFoodBtn.onclick = () => {
+            const d = document.getElementById("date").value;
+            const t = document.getElementById("time").value;
+            appointment.date = d || "не выбрана";
+            appointment.time = t || "не указано";
+            switchPage(page3, page4);
+        };
+
+        // Логика выбора еды
+        document.getElementById("food-burger").onclick = () => finish('Бургер', 'burger.png');
+        document.getElementById("food-sushi").onclick = () => finish('Суши', 'sushi.png');
+        document.getElementById("food-pizza").onclick = () => finish('Пицца', 'pizza.png');
+        document.getElementById("food-kebab").onclick = () => finish('Шашлычки', 'kebab.png');
+
+        function finish(food, img) {
+            document.getElementById("final-image").src = img;
+            // Если выбран шашлык, можно оставить его фото, для остальных по умолчанию будет открываться final.png, если хочешь:
+            // Если хочешь чтобы всегда в конце был final.png, замени строчку выше на: document.getElementById("final-image").src = "final.png";
+            
+            document.getElementById("final-text").innerText = `Жду тебя ${appointment.date} в ${appointment.time}. Нас ждёт ${food} 😉🌸`;
+            switchPage(page4, page5);
+        }
+    </script>
+</body>
+</html>
