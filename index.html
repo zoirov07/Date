@@ -7,10 +7,10 @@
     <style>
         :root {
             --bg: #fff5f7;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --border: rgba(255, 75, 110, 0.15);
-            --accent: #111111; /* Благородный чёрный для главных элементов */
-            --pink-accent: #ff4b6e; /* Романтичный розовый */
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --border: rgba(255, 75, 110, 0.2);
+            --accent: #111111;
+            --pink-accent: #ff4b6e;
             --text-main: #1a1a1a;
             --text-muted: #666666;
         }
@@ -24,18 +24,17 @@
         }
 
         body {
-            background-color: var(--bg);
             background: linear-gradient(135deg, #fff0f3 0%, #ffe5ec 100%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
+            padding: 20px;
         }
 
-        /* Мягкое розовое свечение на фоне */
         .bg-glow {
             position: absolute;
             width: 450px;
@@ -54,24 +53,22 @@
             100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.9; }
         }
 
-        /* Стеклянная бело-розовая карточка премиум качества */
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border);
             border-radius: 30px;
-            padding: 45px 30px;
+            padding: 35px 25px;
             width: 90%;
-            max-width: 390px;
+            max-width: 400px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(255, 75, 110, 0.1), inset 0 1px 1px rgba(255,255,255,0.9);
+            box-shadow: 0 20px 50px rgba(255, 75, 110, 0.12), inset 0 1px 1px rgba(255,255,255,0.9);
             z-index: 1;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .screen {
-            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: fadeIn 0.5s ease-out forwards;
         }
 
         @keyframes fadeIn {
@@ -79,44 +76,30 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Стильный круглый элемент для персонажей и букета */
-        .icon-wrap {
-            width: 90px;
-            height: 90px;
-            background: #ffffff;
-            border: 2px solid #fff0f3;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 25px;
-            font-size: 45px;
-            box-shadow: 0 10px 25px rgba(255, 75, 110, 0.15);
-            animation: floatIcon 3s infinite ease-in-out;
-        }
-
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        /* Оформление картинок из твоих референсов */
+        .main-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
 
         h1 {
             font-size: 22px;
             font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 15px;
-            line-height: 1.3;
+            margin-bottom: 12px;
             color: #111111;
+            line-height: 1.3;
         }
 
         p {
             font-size: 15px;
             color: var(--text-muted);
-            margin-bottom: 35px;
-            line-height: 1.6;
+            margin-bottom: 30px;
+            line-height: 1.5;
         }
 
-        /* Контрастные черные и нежно-розовые кнопки */
         .btn-group {
             display: flex;
             gap: 15px;
@@ -127,7 +110,7 @@
         }
 
         button {
-            padding: 15px 30px;
+            padding: 15px 28px;
             font-size: 15px;
             font-weight: 700;
             border-radius: 16px;
@@ -137,7 +120,7 @@
         }
 
         .btn-primary {
-            background: var(--accent); /* Роскошный черный */
+            background: var(--accent); /* Благородный черный */
             color: #fff;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             width: 100%;
@@ -146,18 +129,12 @@
         .btn-primary:hover {
             background: #222222;
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
         }
 
         .btn-secondary {
             background: #ffffff;
             color: var(--text-main);
             border: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .btn-secondary:hover {
-            background: #f9f9f9;
-            border-color: rgba(0,0,0,0.2);
         }
 
         #no-btn.evading {
@@ -171,7 +148,6 @@
 
         .hidden { display: none !important; }
 
-        /* Белые инпуты с розовым фокусом */
         .input-field {
             width: 100%;
             background: #ffffff;
@@ -192,51 +168,50 @@
             box-shadow: 0 0 12px rgba(255, 75, 110, 0.2);
         }
 
-        /* Реалистичная сетка выбора еды */
+        /* Реалистичные карточки для выбора еды */
         .options-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .option-card {
             background: #ffffff;
             border: 1px solid rgba(0,0,0,0.06);
             border-radius: 18px;
-            padding: 20px 10px;
+            padding: 12px;
             cursor: pointer;
             transition: all 0.25s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .option-card:hover {
             border-color: var(--pink-accent);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 75, 110, 0.12);
+            box-shadow: 0 8px 20px rgba(255, 75, 110, 0.1);
         }
 
-        .option-card .opt-icon {
-            font-size: 32px; /* Чуть крупнее для реалистичности */
+        .option-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
             margin-bottom: 8px;
-            display: block;
         }
 
         .option-card span {
-            font-size: 14px;
-            font-weight: 600;
-            color: #444444;
-        }
-        
-        .option-card:hover span {
-            color: var(--pink-accent);
+            font-size: 13px;
+            font-weight: 700;
+            color: #333;
         }
 
         .success-text {
             font-size: 15px;
             color: #333333;
             line-height: 1.7;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             background: #fff0f3;
             padding: 18px;
             border-radius: 16px;
@@ -254,9 +229,9 @@
     <div class="bg-glow"></div>
 
     <div class="card" id="card">
-        <!-- Экран 1: Мультяшный зайчонок -->
+        <!-- Экран 1: Приглашение (Зайка с сердечком) -->
         <div id="step1" class="screen">
-            <div class="icon-wrap">🐰</div>
+            <img src="https://images.prodia.technology/uploads/c665e8a3-2c49-478a-aef2-ba2697813a36.png" class="main-image" alt="Зайка привет">
             <h1>Кое-что особенное...</h1>
             <p>Мне очень хочется украсть тебя у этого мира на один вечер и побыть только вдвоём. Разделишь его со мной?</p>
             <div class="btn-group">
@@ -265,55 +240,54 @@
             </div>
         </div>
 
-        <!-- Экран 2: Красивый букет -->
+        <!-- Экран 2: Подтверждение (Зайка радуется) -->
         <div id="step2" class="screen hidden">
-            <div class="icon-wrap">💐</div>
+            <img src="https://images.prodia.technology/uploads/36bf5cc7-2fa5-4560-b6b9-9cf30ffba944.png" class="main-image" alt="Зайка с сердцем">
             <h1>Моё любимое «Да»</h1>
             <p>Улыбаюсь прямо сейчас. Я сделаю всё, чтобы этот вечер стал для тебя по-настоящему волшебным.</p>
             <button class="btn-primary" onclick="nextStep('step2', 'step3')">Выбрать идеальный момент</button>
         </div>
 
-        <!-- Экран 3: Время и дата -->
+        <!-- Экран 3: Время и дата (Зайка из коробки) -->
         <div id="step3" class="screen hidden">
-            <div class="icon-wrap">📅</div>
+            <img src="https://images.prodia.technology/uploads/761e0f31-89d1-432a-bc95-07204422e03f.png" class="main-image" alt="Зайка в коробке">
             <h1>Когда тебя украсть?</h1>
-            <p>Выбери день и время, когда ты сможешь полностью забыть о делах и расслабиться.</p>
+            <p>Выбери день и время, когда ты сможешь полностью забыть о делах.</p>
             <input type="date" class="input-field" id="date">
             <input type="time" class="input-field" id="time">
             <button class="btn-primary" onclick="saveDateTime()">Дальше</button>
         </div>
 
-        <!-- Экран 4: Реалистичный выбор еды / атмосферы -->
+        <!-- Экран 4: Меню (Твои реалистичные арты еды) -->
         <div id="step4" class="screen hidden">
-            <div class="icon-wrap">🥂</div>
             <h1>Какое у тебя настроение?</h1>
-            <p>Куда мы отправимся? Выбери то, что тебе ближе сегодня.</p>
+            <p>Выбери то, что тебе ближе всего сегодня.</p>
             <div class="options-grid">
-                <div class="option-card" onclick="completePlan('романтический ужин в красивом месте 🍽️')">
-                    <span class="opt-icon">🍽️</span>
-                    <span>Ужин при свечах</span>
+                <div class="option-card" onclick="completePlan('вкуснейшие бургеры 🍔', 'https://images.prodia.technology/uploads/8636baee-be72-46cc-9097-dfb1a3fb3b1f.png')">
+                    <img src="https://images.prodia.technology/uploads/8636baee-be72-46cc-9097-dfb1a3fb3b1f.png">
+                    <span>Бургеры</span>
                 </div>
-                <div class="option-card" onclick="completePlan('уютный вечер с любимыми суши 🍣')">
-                    <span class="opt-icon">🍣</span>
-                    <span>Атмосферный суши-бар</span>
+                <div class="option-card" onclick="completePlan('аппетитные суши 🍣', 'https://images.prodia.technology/uploads/e4566c7a-96e0-4355-89f4-345377f093a1.png')">
+                    <img src="https://images.prodia.technology/uploads/e4566c7a-96e0-4355-89f4-345377f093a1.png">
+                    <span>Суши</span>
                 </div>
-                <div class="option-card" onclick="completePlan('непринужденную беседа за чашкой кофе ☕')">
-                    <span class="opt-icon">☕</span>
-                    <span>Уютная кофейня</span>
+                <div class="option-card" onclick="completePlan('сочную пиццу 🍕', 'https://images.prodia.technology/uploads/1da93f35-6ae0-4b2e-a50d-d4cc9822a94f.png')">
+                    <img src="https://images.prodia.technology/uploads/1da93f35-6ae0-4b2e-a50d-d4cc9822a94f.png">
+                    <span>Пицца</span>
                 </div>
-                <div class="option-card" onclick="completePlan('романтическую прогулку под ночными огнями города 🌌')">
-                    <span class="opt-icon">🌌</span>
-                    <span>Огни ночного города</span>
+                <div class="option-card" onclick="completePlan('сочные шашлычки 🍢', 'https://images.prodia.technology/uploads/22bf2f72-9988-43b9-a9a8-be8c37efbdf3.png')">
+                    <img src="https://images.prodia.technology/uploads/22bf2f72-9988-43b9-a9a8-be8c37efbdf3.png">
+                    <span>Шашлычки</span>
                 </div>
             </div>
         </div>
 
-        <!-- Экран 5: Завершение (Зайка влюблен) -->
+        <!-- Экран 5: Завершение (Романтическая прогулка) -->
         <div id="step5" class="screen hidden">
-            <div class="icon-wrap">🥰</div>
+            <img src="https://images.prodia.technology/uploads/9b40093a-8664-44aa-9ff7-372545d65715.png" id="final-image" class="main-image" alt="Зайки гуляют">
             <h1>Мгновение зафиксировано</h1>
             <div class="success-text" id="summary-text"></div>
-            <p style="margin-bottom: 0; color: var(--text-muted);">Обратный отсчёт пошёл. Начинаю готовиться и с нетерпением жду нашей встречи. ✨</p>
+            <p style="margin-bottom: 0;">Обратный отсчёт пошёл. Начинаю готовиться и очень жду. ✨</p>
         </div>
     </div>
 
@@ -333,9 +307,14 @@
             nextStep('step3', 'step4');
         }
 
-        function completePlan(format) {
-            const summary = `У нас планы на <strong>${appointment.date}</strong>, ориентировочно в <strong>${appointment.time}</strong>.<br>Нас ждёт <strong>${format}</strong>.`;
+        function completePlan(choice, imgUrl) {
+            // Если выбрана прогулка/шашлычки или пицца — финальный экран покажет общую прогулку из твоих фото!
+            const summary = `У нас планы на <strong>${appointment.date}</strong>, ориентировочно в <strong>${appointment.time}</strong>.<br>Нас ждут <strong>${choice}</strong>!`;
             document.getElementById('summary-text').innerHTML = summary;
+            
+            // Динамически меняем финальную картинку на прогулку под сакурой из твоего последнего фото
+            document.getElementById('final-image').src = "https://images.prodia.technology/uploads/9b40093a-8664-44aa-9ff7-372545d65715.png";
+            
             nextStep('step4', 'step5');
         }
 
