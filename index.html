@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Премиальное Приглашение</title>
+    <title>Особенный вечер ✨</title>
     <style>
         :root {
             --bg: #0a0a0c;
-            --card-bg: rgba(18, 18, 24, 0.7);
-            --border: rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(22, 16, 22, 0.75);
+            --border: rgba(255, 42, 95, 0.15);
             --accent: #ff2a5f;
             --accent-glow: rgba(255, 42, 95, 0.4);
             --text-main: #ffffff;
-            --text-muted: #94a3b8;
+            --text-muted: #cbd5e1;
         }
 
         * {
@@ -34,37 +34,37 @@
             position: relative;
         }
 
-        /* Интерактивный живой фон (взрослый неоновый градиент) */
+        /* Мягкое романтичное неоновое свечение на фоне */
         .bg-glow {
             position: absolute;
-            width: 400px;
-            height: 400px;
+            width: 450px;
+            height: 450px;
             background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 0;
             pointer-events: none;
-            animation: pulseBg 8s infinite alternate ease-in-out;
+            animation: pulseBg 6s infinite alternate ease-in-out;
         }
 
         @keyframes pulseBg {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-            100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.9; }
+            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
         }
 
-        /* Элегантный премиум-контейнер */
+        /* Элегантная стеклянная карточка */
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 40px 30px;
+            border-radius: 28px;
+            padding: 45px 30px;
             width: 90%;
-            max-width: 400px;
+            max-width: 390px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255,255,255,0.1);
             z-index: 1;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -74,38 +74,40 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Кастомная иконка вместо картинок */
         .icon-wrap {
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 42, 95, 0.1);
-            border: 1px solid rgba(255, 42, 95, 0.3);
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 42, 95, 0.12);
+            border: 1px solid rgba(255, 42, 95, 0.4);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0 auto 25px;
-            font-size: 28px;
-            box-shadow: 0 0 20px rgba(255, 42, 95, 0.15);
+            font-size: 26px;
+            box-shadow: 0 0 25px rgba(255, 42, 95, 0.2);
         }
 
         h1 {
-            font-size: 22px;
+            font-size: 23px;
             font-weight: 600;
             letter-spacing: -0.5px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             line-height: 1.3;
+            background: linear-gradient(135deg, #fff 0%, #ffe4e6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         p {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-muted);
-            margin-bottom: 30px;
-            line-height: 1.5;
+            margin-bottom: 35px;
+            line-height: 1.6;
         }
 
         /* Кнопки */
@@ -119,10 +121,10 @@
         }
 
         button {
-            padding: 14px 28px;
+            padding: 15px 30px;
             font-size: 15px;
             font-weight: 600;
-            border-radius: 14px;
+            border-radius: 16px;
             border: none;
             cursor: pointer;
             transition: all 0.25s ease;
@@ -131,13 +133,13 @@
         .btn-primary {
             background: var(--accent);
             color: #fff;
-            box-shadow: 0 4px 15px var(--accent-glow);
+            box-shadow: 0 4px 20px rgba(255, 42, 95, 0.4);
             width: 100%;
         }
 
         .btn-primary:hover {
             background: #ff4575;
-            box-shadow: 0 6px 20px rgba(255, 42, 95, 0.6);
+            box-shadow: 0 6px 25px rgba(255, 42, 95, 0.6);
             transform: translateY(-2px);
         }
 
@@ -156,7 +158,7 @@
             position: fixed;
             z-index: 9999;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            background: #121218;
+            background: #161016;
             border-color: var(--accent);
             color: var(--accent);
         }
@@ -166,24 +168,25 @@
         /* Элегантные инпуты */
         .input-field {
             width: 100%;
-            background: rgba(255,255,255,0.04);
+            background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 14px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 14px;
             color: #fff;
             font-size: 15px;
             margin-bottom: 15px;
             outline: none;
             transition: 0.3s;
+            text-align: center;
         }
 
         .input-field:focus {
             border-color: var(--accent);
-            background: rgba(255,255,255,0.08);
-            box-shadow: 0 0 10px rgba(255, 42, 95, 0.2);
+            background: rgba(255,255,255,0.07);
+            box-shadow: 0 0 12px rgba(255, 42, 95, 0.25);
         }
 
-        /* Сетка выбора вариантов */
+        /* Выбор атмосферы */
         .options-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -192,30 +195,31 @@
         }
 
         .option-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 20px 15px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 18px;
+            padding: 22px 15px;
             cursor: pointer;
             transition: 0.25s ease;
         }
 
         .option-card:hover {
-            background: rgba(255, 42, 95, 0.05);
+            background: rgba(255, 42, 95, 0.06);
             border-color: var(--accent);
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 42, 95, 0.1);
         }
 
         .option-card .opt-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
+            font-size: 26px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .option-card span {
             font-size: 14px;
             font-weight: 500;
-            color: var(--text-muted);
+            color: #94a3b8;
         }
         
         .option-card:hover span {
@@ -225,12 +229,12 @@
         .success-text {
             font-size: 15px;
             color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 25px;
-            background: rgba(255,255,255,0.02);
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.04);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            background: rgba(255, 42, 95, 0.03);
+            padding: 18px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 42, 95, 0.1);
         }
 
         .success-text strong {
@@ -243,66 +247,66 @@
     <div class="bg-glow"></div>
 
     <div class="card" id="card">
-        <!-- Экран 1: Приглашение -->
+        <!-- Экран 1: Интригующий вопрос -->
         <div id="step1" class="screen">
-            <div class="icon-wrap">🥂</div>
-            <h1>Закрытое приглашение</h1>
-            <p>У меня есть к тебе одно эксклюзивное предложение. Проведём этот вечер вместе?</p>
+            <div class="icon-wrap">✨</div>
+            <h1>Кое-что особенное...</h1>
+            <p>Мне очень хочется украсть тебя у этого мира на один вечер и побыть только вдвоём. Разделишь его со мной?</p>
             <div class="btn-group">
-                <button class="btn-primary" style="width: auto;" onclick="nextStep('step1', 'step2')">Определённо да</button>
-                <button class="btn-secondary" id="no-btn">Нет</button>
+                <button class="btn-primary" style="width: auto;" onclick="nextStep('step1', 'step2')">С удовольствием</button>
+                <button class="btn-secondary" id="no-btn">Не смогу</button>
             </div>
         </div>
 
-        <!-- Экран 2: Подтверждение -->
+        <!-- Экран 2: Признание -->
         <div id="step2" class="screen hidden">
-            <div class="icon-wrap">✨</div>
-            <h1>Отличный выбор</h1>
-            <p>Я и не сомневался в твоём вкусе. Давай зафиксируем детали нашей встречи.</p>
-            <button class="btn-primary" onclick="nextStep('step2', 'step3')">Перейти к деталям</button>
+            <div class="icon-wrap">🌹</div>
+            <h1>Моё любимое «Да»</h1>
+            <p>Улыбаюсь прямо сейчас. Я сделаю всё, чтобы этот вечер стал для тебя по-настоящему волшебным.</p>
+            <button class="btn-primary" onclick="nextStep('step2', 'step3')">Выбрать идеальный момент</button>
         </div>
 
         <!-- Экран 3: Время и дата -->
         <div id="step3" class="screen hidden">
-            <div class="icon-wrap">📅</div>
-            <h1>Когда тебе удобно?</h1>
-            <p>Укажи подходящую дату и время, чтобы я всё спланировал.</p>
+            <div class="icon-wrap">✨</div>
+            <h1>Когда тебя украсть?</h1>
+            <p>Выбери день и время, когда ты сможешь полностью забыть о делах и расслабиться.</p>
             <input type="date" class="input-field" id="date">
             <input type="time" class="input-field" id="time">
-            <button class="btn-primary" onclick="saveDateTime()">Далее</button>
+            <button class="btn-primary" onclick="saveDateTime()">Дальше</button>
         </div>
 
-        <!-- Экран 4: Формат встречи -->
+        <!-- Экран 4: Атмосфера -->
         <div id="step4" class="screen hidden">
-            <div class="icon-wrap">🌃</div>
-            <h1>Формат вечера</h1>
-            <p>Выбери локацию или атмосферу, которая тебе ближе всего.</p>
+            <div class="icon-wrap">🥂</div>
+            <h1>Какое у тебя настроение?</h1>
+            <p>Куда мы отправимся? Выбери то, что тебе ближе сегодня.</p>
             <div class="options-grid">
-                <div class="option-card" onclick="completePlan('Ужин в ресторане 🍽️')">
+                <div class="option-card" onclick="completePlan('романтический ужин в красивом месте 🍽️')">
                     <span class="opt-icon">🍽️</span>
-                    <span>Ресторан</span>
+                    <span>Ужин при свечах</span>
                 </div>
-                <div class="option-card" onclick="completePlan('Вечер дегустации суши 🍣')">
+                <div class="option-card" onclick="уютный вечер с любимыми суши 🍣')">
                     <span class="opt-icon">🍣</span>
-                    <span>Суши-бар</span>
+                    <span>Атмосферный суши-бар</span>
                 </div>
-                <div class="option-card" onclick="completePlan('Уютная кофейня ☕')">
+                <div class="option-card" onclick="непринужденная беседа за чашкой кофе ☕')">
                     <span class="opt-icon">☕</span>
-                    <span>Кофейня</span>
+                    <span>Уютная кофейня</span>
                 </div>
-                <div class="option-card" onclick="completePlan('Вечерняя прогулка по городу 🌌')">
+                <div class="option-card" onclick="романтическая прогулка под ночными огнями города 🌌')">
                     <span class="opt-icon">🌌</span>
-                    <span>Прогулка</span>
+                    <span>Огни ночного города</span>
                 </div>
             </div>
         </div>
 
-        <!-- Экран 5: Финал -->
+        <!-- Экран 5: Завершение -->
         <div id="step5" class="screen hidden">
-            <div class="icon-wrap">🔒</div>
-            <h1>Встреча подтверждена</h1>
+            <div class="icon-wrap">❤️</div>
+            <h1>Мгновение зафиксировано</h1>
             <div class="success-text" id="summary-text"></div>
-            <p style="margin-bottom: 0;">До скорого. Я сообщу, когда всё будет готово. 😉</p>
+            <p style="margin-bottom: 0;">Обратный отсчёт пошёл. Начинаю готовиться и с нетерпением жду нашей встречи. ✨</p>
         </div>
     </div>
 
@@ -317,18 +321,18 @@
         function saveDateTime() {
             const d = document.getElementById('date').value;
             const t = document.getElementById('time').value;
-            appointment.date = d ? new Date(d).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' }) : "Ближайшие дни";
-            appointment.time = t || "Вечер";
+            appointment.date = d ? new Date(d).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' }) : "один из дней";
+            appointment.time = t || "вечер";
             nextStep('step3', 'step4');
         }
 
         function completePlan(format) {
-            const summary = `План утверждён на <strong>${appointment.date}</strong> в <strong>${appointment.time}</strong>.<br>Формат встречи: <strong>${format}</strong>.`;
+            const summary = `У нас планы на <strong>${appointment.date}</strong>, ориентировочно в <strong>${appointment.time}</strong>.<br>Нас ждёт <strong>${format}</strong>.`;
             document.getElementById('summary-text').innerHTML = summary;
             nextStep('step4', 'step5');
         }
 
-        // Логика уклонения кнопки "Нет"
+        // Кнопка уклонения "Не смогу"
         const noBtn = document.getElementById('no-btn');
         const handleNo = (e) => {
             if (e.type === 'touchstart') e.preventDefault();
